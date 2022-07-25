@@ -2,24 +2,23 @@ import * as express from 'express'
 
 const app = express()
 
-app.get('/', (req, res) =>{
-  res.send('GET /')
-}) 
+import userController from './controller/userController'
+import postController from './controller/postController'
 
-app.post('/', (req, res) => {
-  res.status(201).send('POST /')
-})
+app.use('/user', userController)
+app.use('/post', postController)
+/*
 
-app.put('/', (req, res) => {
-  res.status(400).send('PUT /')
-})
+Rotas que nós temos que criar para usar: 
 
-app.delete('/', (req, res) => {
-  res.send(' DELETE /')
-})
++ Essas duas primeiras rotas são referentes ao USUÁRIO:
+  - Cadastro 
+  - Login 
 
-app.patch('/', (req, res) => {
-  res.send(' PATCH /')
-})
+  + Essas duas são relacionadas aos POSTS: 
+  - Criar posts
+  - Listar posts
+
+*/
 
 app.listen(3000, () => console.log(`Online http://localhost:3000`))
