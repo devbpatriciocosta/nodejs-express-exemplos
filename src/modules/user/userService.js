@@ -1,20 +1,10 @@
-let users = [
-  {
-    email: 'bpatriciocosta@gmail.com'
-  },
-  {
-    email: 'josehfortes@gmail.com'
-  }
-]
+let users = []
 
 const getUserByEmail = (searchEmail) => users.find((obj) => obj.email === searchEmail )
 
 export const signup = (data) => {
-  if (getUserByEmail(data.email)) {
-    console.log("Existe O e-mail")
-  } else {
-    users.push(data)
-  }
+  if (getUserByEmail(data.email)) throw new Error('email_existente')
     
-  return true
+    users.push(data)
+    return true
 }
