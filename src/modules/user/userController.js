@@ -23,7 +23,7 @@ router.post('/login', (req, res) =>{
     const token = login(req.body)
     res.cookie(AUTH_COOKIE_NAME, token).status(200).send()
   } catch (err) {
-    if (err.message  === 'email_errado' || err.message === 'senha_invalida')
+    if (err.message  === 'email_nao_encontrado' || err.message === 'senha_invalida')
     return res.status(400).send(err.message)
 
     res.status(500).send()
